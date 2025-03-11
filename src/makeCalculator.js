@@ -8,23 +8,31 @@ function makeCalculator() {
     result: 0,
 
     add(num) {
-      return this.result + num;
+      this.result += num;
+
+      return this; // Чейнинг
     },
 
     subtract(num) {
-      return this.result - num;
+      this.result -= num;
+
+      return this;
     },
 
     multiply(num) {
-      return this.result * num;
+      this.result *= num;
+
+      return this;
     },
 
     divide(num) {
-      return this.result / num;
+      this.result /= num;
+
+      return this;
     },
 
     operate(fn, num) {
-      this.result = fn.call(this, num); // Применяем функцию с контекстом
+      fn.call(this, num); // Просто вызываем функцию, НЕ присваиваем результат
 
       return this; // Чейнинг
     },
